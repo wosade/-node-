@@ -1,5 +1,7 @@
 import express from 'express'
 import cors from 'cors'
+import { log } from 'console'
+import authRouter from "./routes/auth.js";
 
 const app = express()
 
@@ -9,15 +11,7 @@ app.use(cors())
 app.use(express.json())
 
 // 路由
-app.get('/api/auth',)
-app.use((req, res, next) => {
-  console.log('1 start');
-  next();
-  console.log('1 end');
-});
-app.use((req, res, next) => {
-  console.log('2 start');
-  next();
-  console.log('2 end');
-});
-// 输出：1 start → 2 start → 2 end → 1 end
+app.use("/api/auth", authRouter);
+app.listen('3030',()=>{
+  console.log(`server running on 3030`)
+})
