@@ -12,8 +12,9 @@ export class AppError extends Error {
 export function errorHandler(
   err: Error,
   _req: Request,
-  _next: NextFunction,
   res: Response,
+  _next: NextFunction,
+  
 ): void {
   const status = err instanceof AppError ? err.status : 500;
   const message = err.message || "服务器内部错误";
